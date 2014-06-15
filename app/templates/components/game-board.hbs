@@ -1,0 +1,11 @@
+{{#each squares}}
+    <li {{action 'selectSquare' _view.contentIndex}}>
+        {{#if isComputer}}
+            {{fa-icon 'circle-o'}}
+        {{else}}
+            {{#if isHuman}}
+                {{fa-icon 'times'}}
+            {{/if}}
+        {{/if}}
+    </li>
+{{/each}}
