@@ -25,6 +25,7 @@
     "body-parser": "^1.2.0",
     "glob": "^3.2.9",
     "broccoli-coffee": "~0.1.0",
-    "broccoli-ember-script": "~0.1.1"
+    "broccoli-ember-script": "~0.1.1",
+    "broccoli-less-single": "~0.1.4"
   }
 }

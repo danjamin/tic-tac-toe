@@ -48,5 +48,9 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
   ]
 });
 
+// Add font-awesome
+app.import('vendor/font-awesome/fonts/fontawesome-webfont.ttf');
+app.import('vendor/font-awesome/fonts/fontawesome-webfont.woff');
+
 
 module.exports = app.toTree();
