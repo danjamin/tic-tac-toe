@@ -5,11 +5,21 @@ class Index extends Em.ObjectController
     
     board: Em.computed.alias 'model'
 
+    isPaused: false
+
     actions:
         squareMarked: (index) ->
-            board = @board
-            board.markSquare(index, Square.human)
-            nextMove = AI.nextMove(board)
-            board.markSquare(nextMove, Square.computer)
+            paused = @isPaused
+
+            unless paused
+                @isPaused = true
+
+                board = @board
+                if board.markSquare(index, Square.human)
+                    nextMove = AI.nextMove(board)
+                    isGameOver = @isGameOver
+                    board.markSquare(nextMove, Square.computer) unless isGameOver
+
+                @isPaused = false
 
 `export default Index`

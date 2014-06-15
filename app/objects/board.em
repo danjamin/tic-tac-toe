@@ -12,7 +12,7 @@ class Board extends Em.Object
         ]
         @moveStack = []
 
-    isGameOver:             Em.computed.or      'nobodyWins', 'computerWins'
+    isGameOver:             Em.computed.or      'noMoreMoves', 'computerWins', 'humanWins'
     noMoreMoves:            Em.computed.empty   'possibleSquares'
     computerHasNotWonYet:   Em.computed.not     'computerWins'
     humanHasNotWonYet:      Em.computed.not     'humanWins'
@@ -54,9 +54,14 @@ class Board extends Em.Object
     possibleSquares: -> (i for square, i in @squares when square.get('isBlank'))
 
     markSquare: (index, squareType) ->
-        @squares.objectAt(index).set('content', squareType)
-        @lastMove = index
-        @moveStack.unshiftObject(@lastMove)
+        isGameOver = @isGameOver
+        if not isGameOver and @squares.objectAt(index).get('isBlank')
+            @squares.objectAt(index).set('content', squareType)
+            @lastMove = index
+            @moveStack.unshiftObject(@lastMove)
+            return true
+        else
+            return false
 
     undoLastMark: ->
         return unless @step?
