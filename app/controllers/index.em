@@ -8,6 +8,10 @@ class Index extends Em.ObjectController
     isPaused: false
 
     actions:
+        resetBoard: ->
+            board = @board
+            board.reset()
+
         squareMarked: (index) ->
             paused = @isPaused
 

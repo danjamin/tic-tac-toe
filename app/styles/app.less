@@ -1,27 +1,12 @@
 @import "vendor/font-awesome/less/font-awesome.less";
-
 @fa-font-path: "../font-awesome/fonts";
+
+@import "components/game-board.less";
 
 html, body {
   margin: 20px;
-}
 
-ul.game-board-component {
-    list-style-type: none;
-
-    li {
-        width: 100px;
-        height: 100px;
-        border: 1px solid black;
-        float: left;
-        
-        i {
-            font-size: 100px;
-            color: gray;
-        }
-    }
-
-    li:nth-of-type(3n+1) {
-        clear: left;
-    }
+  @media screen and (max-width: 320px) {
+    margin: 4px;
+  }
 }

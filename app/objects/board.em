@@ -24,6 +24,9 @@ class Board extends Em.Object
     step:     Em.computed.alias 'moveStack.length'
     lastMove: ~> @moveStack.objectAt(@step)
 
+    reset: ->
+        @undoLastMark() while not Em.isEmpty(@moveStack)
+            
            
     +computed squares.@each.isBlank
     isEmpty: -> @squares.every (square) -> square.get('isBlank')

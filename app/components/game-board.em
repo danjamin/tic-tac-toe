@@ -1,6 +1,6 @@
 class GameBoard extends Em.Component
     tagName: 'ul'
-    classNames: 'game-board-component'.w()
+    classNames: 'game-board-component clearfix'.w()
 
     board: null
     selectAction: null
