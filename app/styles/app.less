@@ -4,10 +4,24 @@
 @import "components/game-board.less";
 
 html, body {
-  margin: 20px;
   min-width: 320px;
+  margin: 10px;
+  
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   @media screen and (max-width: 320px) {
     margin: 4px;
   }
+}
+
+a {
+    text-decoration: none;
+
+    &:visited {
+        color: blue;
+    }
+}
+
+a.github-link {
+    font-size: 10pt;
 }
