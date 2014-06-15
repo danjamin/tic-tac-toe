@@ -5,27 +5,82 @@ Tic-tac-toe is an Ember implementation of tic tac toe.
 As a player, you get to go first, and the computer will play against your moves
 using an AI algorithm that can NOT lose -- at best, you can tie with it.
 
+Example app served at http://danjamin-tic-tac-toe.herokuapp.com/
+
+## Stack
+
+* Scaffolded via [ember-cli](http://iamstef.net/ember-cli/)
+* Primarily written in [Ember.js](http://emberjs.com/) and [EmberScript](http://emberscript.com/)
+* Styles written in [less](http://lesscss.org/)
+* Front-end dependency management via [Bower](http://bower.io/)
+* Build and back-end dependencies managed via [npm](https://www.npmjs.org/)
+* Build managed via [gulp](http://gulpjs.com/)
+* Deployed to and hosted by [heroku](http://heroku.com/)
+
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+    $ git clone {this repository}
+    $ npm install
+    $ bower install
 
 ## Running
 
-* `ember server`
-* Visit your app at http://localhost:4200.
-* The app will automatically live reload
+    $ ember server
+
+Visit your app at http://localhost:4200.
 
 ## Running Tests
 
-* `ember test`
-* `ember test --server`
+You can run once via
 
-Alternatively, you can visit http://localhost:4200/tests to run the tests in the browser while `ember server` is running
+    $ ember test
 
-## Building
+You can continue to serve the tests via:
 
-* `ember build`
+    $ ember test --server
 
-For more information on using ember-cli, visit [http://iamstef.net/ember-cli/](http://iamstef.net/ember-cli/).
+Alternatively, you can visit http://localhost:4200/tests after
+
+    $ ember server
+
+## Staging locally
+
+Install production dependencies
+
+    $ npm install --production
+    $ npm prune
+    $ bower install --production
+    $ bower prune
+
+Build the `dist` version of the app
+
+    $ ember build --environment production
+
+Run foreman server
+
+    $ foreman start
+
+## Deploying
+
+Login and create the heroku remote
+
+    $ heroku login
+    $ heroku create
+
+Deploy the app
+
+    $ git push heroku master
+
+## Monitoring
+
+View the dynos
+
+    $ heroku ps
+
+View the logs
+
+    $ heroku logs
+
+View the app
+
+    $ heroku open
