@@ -19,7 +19,8 @@ class Index extends Em.ObjectController
                 @isPaused = true
 
                 board = @board
-                if board.markSquare(index, Square.human)
+                isGameOver = @isGameOver
+                if not isGameOver and board.markSquare(index, Square.human)
                     nextMove = AI.nextMove(board)
                     isGameOver = @isGameOver
                     board.markSquare(nextMove, Square.computer) unless isGameOver
