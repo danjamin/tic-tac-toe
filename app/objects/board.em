@@ -17,9 +17,10 @@ class Board extends Em.Object
     computerHasNotWonYet:   Em.computed.not     'computerWins'
     humanHasNotWonYet:      Em.computed.not     'humanWins'
     nobodyWins:             Em.computed.and     'noMoreMoves', 'computerHasNotWonYet', 'humanHasNotWonYet'
-    canWin:                 Em.computed.bool    'winningMove'
-    canBlock:               Em.computed.bool    'blockingMove'
-    hasBlankCorner:         Em.computed.bool    'nextAvailableCorner'
+    cannotWin:              Em.computed.empty   'winningMove'
+    canWin:                 Em.computed.not     'cannotWin'
+    cannotBlock:            Em.computed.empty   'blockingMove'
+    canBlock:               Em.computed.not     'cannotBlock'
 
     step:     Em.computed.alias 'moveStack.length'
     lastMove: ~> @moveStack.objectAt(@step)
@@ -56,15 +57,21 @@ class Board extends Em.Object
     +computed squares.@each.isBlank
     possibleSquares: -> (i for square, i in @squares when square.get('isBlank'))
 
+    +computed possibleSquares.@each
+    possibleWinSquaresComputer: ->
+        return getPossibleWinSquares.call(@, Square.computer)
+
+    +computed possibleSquares.@each
+    possibleWinSquaresHuman: ->
+        return getPossibleWinSquares.call(@, Square.human)
+
     markSquare: (index, squareType) ->
-        isGameOver = @isGameOver
-        if not isGameOver and @squares.objectAt(index).get('isBlank')
-            @squares.objectAt(index).set('content', squareType)
-            @lastMove = index
-            @moveStack.unshiftObject(@lastMove)
-            return true
-        else
-            return false
+        return false unless @squares.objectAt(index).get('isBlank')
+
+        @squares.objectAt(index).set('content', squareType)
+        @lastMove = index
+        @moveStack.unshiftObject(@lastMove)
+        return true
 
     undoLastMark: ->
         return unless @step?
@@ -102,8 +109,16 @@ class Board extends Em.Object
 
         return null
 
-    +computed possibleSquares.@each
-    nextAvailable: -> @possibleSquares.objectAt(0) unless Em.isEmpty(@possibleSquares)
+getPossibleWinSquares = (type) ->
+    possibleWinSquares = []
+    for move in @possibleSquares
+        @markSquare(move, type)
+        if type is Square.computer
+            possibleWinSquares.push(move) if @computerWins
+        else
+            possibleWinSquares.push(move) if @humanWins
+        @undoLastMark()
+    return possibleWinSquares
 
 
 Board.reopenClass

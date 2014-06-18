@@ -20,7 +20,6 @@ test 'Board - empty instance works', ->
     deepEqual b.get('moveStack'), [], 'stack is empty'
     equal b.get('step'), 0, 'step is 0 to start'
     deepEqual b.get('possibleSquares'), [0..8], 'all moves are possible'
-    equal b.get('nextAvailable'), 0, 'next possible move is 0'
 
 test 'Board - after first move works', ->
     b = new Board()
@@ -34,7 +33,6 @@ test 'Board - after first move works', ->
     deepEqual b.get('moveStack'), [0], 'stack contains first move'
     equal b.get('step'), 1, 'step is 1 now'
     deepEqual b.get('possibleSquares'), [1..8], 'check remaining moves'
-    equal b.get('nextAvailable'), 1, 'next possible move is 1'
 
 test 'Board - basic win works', ->
     b = new Board()
