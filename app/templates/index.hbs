@@ -1,22 +1,22 @@
 {{game-board board=board selectAction='squareMarked'}}
 
 <p>
-    {{#if isEmpty}}
-        You go first
-    {{else}}
-        {{#if isGameOver}}
-            {{#if nobodyWins}}
-                We tied
-            {{else}}
-                {{#if computerWins}}
-                    You lost
-                {{else}}
-                    You win
-                {{/if}}
-            {{/if}}
-            <a href="#" {{action 'resetBoard'}}>
-                Play again? {{fa-icon 'refresh'}} 
-            </a>
+  {{#if isEmpty}}
+    You go first
+  {{else}}
+    {{#if isGameOver}}
+      {{#if nobodyWins}}
+        We tied
+      {{else}}
+        {{#if computerWins}}
+          You lost
+        {{else}}
+          You win
         {{/if}}
+      {{/if}}
+      <a href="#" {{action 'resetBoard'}}>
+        Play again? {{fa-icon 'refresh'}} 
+      </a>
     {{/if}}
+  {{/if}}
 </p>
