@@ -2,6 +2,7 @@
 
 var Application = require('tic-tac-toe/app')['default'];
 var Router = require('tic-tac-toe/router')['default'];
+import Ember from 'ember';
 
 export default function startApp(attrs) {
   var App;

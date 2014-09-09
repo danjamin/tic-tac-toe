@@ -3,17 +3,7 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
-  name: require('./package.json').name,
-
-  // for some large projects, you may want to uncomment this (for now)
-  es3Safe: true,
-
-  minifyCSS: {
-    enabled: true,
-    options: {}
-  },
-
-  getEnvJSON: require('./config/environment')
+  vendorFiles: {}
 });
 
 // Use `app.import` to add additional libraries to the generated
@@ -29,28 +19,12 @@ var app = new EmberApp({
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import({
-  development: 'vendor/ember-data/ember-data.js',
-  production:  'vendor/ember-data/ember-data.prod.js'
-}, {
-  'ember-data': [
-    'default'
-  ]
-});
-
-app.import('vendor/ic-ajax/dist/named-amd/main.js', {
-  'ic-ajax': [
-    'default',
-    'defineFixture',
-    'lookupFixture',
-    'raw',
-    'request',
-  ]
-});
 
 // Add font-awesome
 app.import('vendor/font-awesome/fonts/fontawesome-webfont.ttf');
 app.import('vendor/font-awesome/fonts/fontawesome-webfont.woff');
-
+app.import('vendor/font-awesome/fonts/fontawesome-webfont.svg');
+app.import('vendor/font-awesome/fonts/fontawesome-webfont.eot');
+app.import('vendor/font-awesome/fonts/FontAwesome.otf');
 
 module.exports = app.toTree();

@@ -25,7 +25,7 @@ Example app served at http://danjamin-tic-tac-toe.herokuapp.com/
 
 ## Running
 
-    $ ember server
+    $ ./node_modules/.bin/ember server
 
 Visit your app at http://localhost:4200.
 
@@ -33,15 +33,15 @@ Visit your app at http://localhost:4200.
 
 You can run once via
 
-    $ ember test
+    $ ./node_modules/.bin/ember test
 
 You can continue to serve the tests via:
 
-    $ ember test --server
+    $ ./node_modules/.bin/ember test --server
 
 Alternatively, you can visit http://localhost:4200/tests after
 
-    $ ember server
+    $ ./node_modules/.bin/ember server
 
 ## Staging locally
 
@@ -54,7 +54,7 @@ Install production dependencies
 
 Build the `dist` version of the app
 
-    $ ember build --environment production
+    $ ./node_modules/.bin/ember build --environment production
 
 Run foreman server
 

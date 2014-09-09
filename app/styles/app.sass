@@ -1,0 +1,21 @@
+$fa-font-path: "/font-awesome/fonts"
+@import ../../vendor/font-awesome/scss/font-awesome
+@import components/game-board
+
+html, body
+  min-width: 320px
+  margin: 10px
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+
+  @media screen and (max-width: 320px)
+    margin: 4px
+
+a
+  text-decoration: none
+
+  &:visited
+    color: blue
+
+  &.github-link
+    font-size: 10pt
