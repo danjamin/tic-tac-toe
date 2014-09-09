@@ -25,7 +25,7 @@ Example app served at http://danjamin-tic-tac-toe.herokuapp.com/
 
 ## Running
 
-    $ ./node_modules/.bin/ember server
+    $ npm start
 
 Visit your app at http://localhost:4200.
 
@@ -33,7 +33,7 @@ Visit your app at http://localhost:4200.
 
 You can run once via
 
-    $ ./node_modules/.bin/ember test
+    $ npm test
 
 You can continue to serve the tests via:
 
@@ -41,16 +41,16 @@ You can continue to serve the tests via:
 
 Alternatively, you can visit http://localhost:4200/tests after
 
-    $ ./node_modules/.bin/ember server
+    $ npm start
 
 ## Staging locally
 
 Install production dependencies
 
+    $ npm prune --production
     $ npm install --production
-    $ npm prune
+    $ bower prune --production
     $ bower install --production
-    $ bower prune
 
 Build the `dist` version of the app
 
@@ -66,6 +66,10 @@ Login and create the heroku remote
 
     $ heroku login
     $ heroku create
+
+Use the correct build pack:
+
+    $ heroku config:set BUILDPACK_URL=https://github.com/tonycoco/heroku-buildpack-ember-cli.git
 
 Deploy the app
 

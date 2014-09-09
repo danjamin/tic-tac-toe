@@ -1,8 +1,6 @@
-/* global require */
-
-var Application = require('tic-tac-toe/app')['default'];
-var Router = require('tic-tac-toe/router')['default'];
 import Ember from 'ember';
+import Application from 'tic-tac-toe/app';
+import Router from 'tic-tac-toe/router';
 
 export default function startApp(attrs) {
   var App;
@@ -18,7 +16,7 @@ export default function startApp(attrs) {
     location: 'none'
   });
 
-  Ember.run(function(){
+  Ember.run(function() {
     App = Application.create(attributes);
     App.setupForTesting();
     App.injectTestHelpers();
