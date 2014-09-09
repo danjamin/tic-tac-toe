@@ -1,4 +1,4 @@
-# Tic-tac-toe
+## Tic-tac-toe [![Build Status](https://travis-ci.org/danjamin/tic-tac-toe.svg?branch=master)](https://travis-ci.org/danjamin/tic-tac-toe)
 
 Tic-tac-toe is an Ember implementation of tic tac toe.
 
