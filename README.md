@@ -31,6 +31,10 @@ Visit your app at http://localhost:4200.
 
 ## Running Tests
 
+To run command line tests you will **need phantomjs installed globally**
+
+    $ sudo npm install -g phantomjs
+
 You can run once via
 
     $ npm test
