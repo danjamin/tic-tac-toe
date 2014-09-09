@@ -10,11 +10,10 @@ Example app served at http://danjamin-tic-tac-toe.herokuapp.com/
 ## Stack
 
 * Scaffolded via [ember-cli](http://iamstef.net/ember-cli/)
-* Primarily written in [Ember.js](http://emberjs.com/) and [EmberScript](http://emberscript.com/)
-* Styles written in [less](http://lesscss.org/)
+* Primarily written in [Ember.js](http://emberjs.com/) and [CoffeeScript](http://coffeescript.org/)
+* Styles written in [Sass](http://sass-lang.com/)
 * Front-end dependency management via [Bower](http://bower.io/)
 * Build and back-end dependencies managed via [npm](https://www.npmjs.org/)
-* Build managed via [gulp](http://gulpjs.com/)
 * Deployed to and hosted by [heroku](http://heroku.com/)
 
 ## Installation
