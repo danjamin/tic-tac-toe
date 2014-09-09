@@ -1,7 +1,7 @@
 `import { test } from 'ember-qunit'`
-`import AI from 'tic-tac-toe/objects/ai'`
-`import Board from 'tic-tac-toe/objects/board'`
-`import Square from 'tic-tac-toe/objects/square'`
+`import AI from 'tic-tac-toe/models/ai'`
+`import Board from 'tic-tac-toe/models/board'`
+`import Square from 'tic-tac-toe/models/square'`
 
 test 'AI - sanity check', ->
   equal typeof AI.nextMove, 'function', 'nextMove is a function'
@@ -21,11 +21,11 @@ test 'AI - last move works', ->
   b.markSquare(0, Square.computer)
   b.markSquare(1, Square.human)
   b.markSquare(2, Square.computer)
-  
+
   b.markSquare(3, Square.human)
   b.markSquare(4, Square.computer)
   b.markSquare(5, Square.human)
-  
+
   b.markSquare(6, Square.human)
   b.markSquare(7, Square.computer)
 
@@ -55,7 +55,7 @@ test 'AI - take obvious win', ->
 test 'AI - block loss', ->
   b = Board.create()
 
-  #   |   | 
+  #   |   |
   # ----------
   #   | x | x
   # ----------
@@ -71,11 +71,11 @@ test 'AI - block loss', ->
 test 'AI - block loss on 0', ->
   b = Board.create()
 
-  #   |   | 
+  #   |   |
   # ----------
-  # x | o | 
+  # x | o |
   # ----------
-  # x |   | 
+  # x |   |
   b.markSquare(3, Square.human)
   b.markSquare(4, Square.computer)
 
@@ -87,9 +87,9 @@ test 'AI - block loss on 0', ->
 test 'AI - block potential loss 1', ->
   b = Board.create()
 
-  # o |   | 
+  # o |   |
   # ----------
-  #   | x | 
+  #   | x |
   # ----------
   #   |   | x
   b.markSquare(0, Square.computer)
@@ -104,11 +104,11 @@ test 'AI - block potential loss 1', ->
 test 'AI - block potential loss 2', ->
   b = Board.create()
 
-  # x |   | 
+  # x |   |
   # ----------
-  #   | o | 
+  #   | o |
   # ----------
-  #   | x | 
+  #   | x |
   b.markSquare(0, Square.human)
 
   b.markSquare(4, Square.computer)
@@ -121,9 +121,9 @@ test 'AI - block potential loss 2', ->
 test 'AI - block potential loss 3', ->
   b = Board.create()
 
-  # x |   | 
+  # x |   |
   # ----------
-  #   | o | 
+  #   | o |
   # ----------
   #   |   | x
   b.markSquare(0, Square.human)

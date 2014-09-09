@@ -1,5 +1,5 @@
 `import Em from 'ember'`
-`import Square from 'tic-tac-toe/objects/square'`
+`import Square from 'tic-tac-toe/models/square'`
 
 Board = Em.Object.extend
   squares: null
@@ -46,7 +46,7 @@ Board = Em.Object.extend
       count = 0
       count++ for index in win when squares.objectAt(index).get('isComputer')
       return true if count is 3
-    
+
     false
 
   # Human wins if his spots match a winning placement
@@ -93,9 +93,9 @@ Board = Em.Object.extend
     return unless step?
 
     lastMove = moveStack.shiftObject(step)
-    
+
     @set 'lastMove', lastMove
-    
+
     squares.objectAt(lastMove).set('content', Square.blank)
 
   winningMove: Em.computed 'squares.@each.content', ->
@@ -140,7 +140,7 @@ _getPossibleWinSquares = (type) ->
     else
       possibleWinSquares.push(move) if @get('humanWins')
     @undoLastMark()
-  
+
   possibleWinSquares
 
 Board.reopenClass
@@ -160,7 +160,7 @@ Board.reopenClass
   ]
 
   cornerFarthestFrom: (edge) ->
-    farthest = 
+    farthest =
       1: 6
       3: 8
       5: 0

@@ -9,10 +9,10 @@ Square = Em.Object.extend
 
   isComputer: Em.computed 'content', ->
     @get('content') is Square.computer
-  
+
   isHuman: Em.computed 'content', ->
     @get('content') is Square.human
-  
+
   isBlank: Em.computed 'content', ->
     @get('content') is Square.blank
 

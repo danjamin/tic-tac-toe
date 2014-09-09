@@ -1,6 +1,6 @@
 `import Em from 'ember'`
-`import Square from 'tic-tac-toe/objects/square'`
-`import AI from 'tic-tac-toe/objects/ai'`
+`import Square from 'tic-tac-toe/models/square'`
+`import AI from 'tic-tac-toe/models/ai'`
 
 IndexController = Em.ObjectController.extend
   board: Em.computed.alias 'model'

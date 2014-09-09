@@ -1,5 +1,5 @@
 `import { test } from 'ember-qunit'`
-`import Square from 'tic-tac-toe/objects/square'`
+`import Square from 'tic-tac-toe/models/square'`
 
 test 'Square - sanity check', ->
   equal Square.computer, 'computer', 'computer const is correct'

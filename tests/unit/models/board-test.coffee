@@ -1,11 +1,11 @@
 `import { test } from 'ember-qunit'`
-`import Board from 'tic-tac-toe/objects/board'`
-`import Square from 'tic-tac-toe/objects/square'`
+`import Board from 'tic-tac-toe/models/board'`
+`import Square from 'tic-tac-toe/models/square'`
 
 test 'Board - sanity check', ->
   equal Board.center, 4, 'center constant is correct'
 
-test 'Board - empty instance works', -> 
+test 'Board - empty instance works', ->
   b = Board.create()
   ok b.get('isEmpty'), 'is empty'
   ok not b.get('noMoreMoves'), 'has more moves'
@@ -67,7 +67,7 @@ test 'Board - diagonal win works', ->
 
 test 'Board - full board win', ->
   b = Board.create()
-  
+
   # x | o | x
   # ----------
   # o | x | o
@@ -76,11 +76,11 @@ test 'Board - full board win', ->
   b.markSquare(0, Square.computer)
   b.markSquare(1, Square.human)
   b.markSquare(2, Square.computer)
-  
+
   b.markSquare(3, Square.human)
   b.markSquare(4, Square.computer)
   b.markSquare(5, Square.human)
-  
+
   b.markSquare(6, Square.human)
   b.markSquare(7, Square.computer)
 
@@ -98,7 +98,7 @@ test 'Board - undo last works on empty', ->
 
   equal b.get('step'), 0, 'step is 0 to start'
   deepEqual b.get('moveStack'), [], 'stack is empty'
-  
+
   b.markSquare(2, Square.computer)
 
   equal b.get('step'), 1, 'step is 1 now'
@@ -114,13 +114,13 @@ test 'Board - undo last works after 2 moves', ->
 
   equal b.get('step'), 0, 'step is 0 to start'
   deepEqual b.get('moveStack'), [], 'stack is empty'
-  
+
   b.markSquare(2, Square.computer)
   b.markSquare(3, Square.computer)
 
   equal b.get('step'), 2, 'step is 2 now'
   deepEqual b.get('moveStack'), [3, 2], 'stack contains moves'
-  
+
   b.undoLastMark()
 
   equal b.get('step'), 1, 'step is 1 after undo'
@@ -136,7 +136,7 @@ test 'Board - winning move row', ->
 
   # x |   | x
   # ----------
-  #   |   | 
+  #   |   |
   # ----------
   #   |   |
   b.markSquare(0, Square.computer)
@@ -150,7 +150,7 @@ test 'Board - winning move column', ->
 
   #   |   | x
   # ----------
-  #   |   | 
+  #   |   |
   # ----------
   #   |   | x
   b.markSquare(2, Square.computer)
@@ -162,9 +162,9 @@ test 'Board - winning move column', ->
 test 'Board - winning move diagonal', ->
   b = Board.create()
 
-  # x |   | 
+  # x |   |
   # ----------
-  #   |   | 
+  #   |   |
   # ----------
   #   |   | x
   b.markSquare(0, Square.computer)
@@ -178,7 +178,7 @@ test 'Board - more than one possible win', ->
 
   # x |   | x
   # ----------
-  #   | o | 
+  #   | o |
   # ----------
   #   |   | x
   b.markSquare(0, Square.computer)
@@ -199,7 +199,7 @@ test 'Board - blocking move row', ->
 
   # o |   | o
   # ----------
-  #   |   | 
+  #   |   |
   # ----------
   #   |   |
   b.markSquare(0, Square.human)
@@ -214,7 +214,7 @@ test 'Board - blocking move column', ->
 
   #   |   | o
   # ----------
-  #   |   | 
+  #   |   |
   # ----------
   #   |   | o
   b.markSquare(2, Square.human)
@@ -226,9 +226,9 @@ test 'Board - blocking move column', ->
 test 'Board - blocking move diagonal', ->
   b = Board.create()
 
-  # o |   | 
+  # o |   |
   # ----------
-  #   |   | 
+  #   |   |
   # ----------
   #   |   | o
   b.markSquare(0, Square.human)

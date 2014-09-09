@@ -1,6 +1,6 @@
 `import Em from 'ember'`
-`import Board from 'tic-tac-toe/objects/board'`
-`import Square from 'tic-tac-toe/objects/square'`
+`import Board from 'tic-tac-toe/models/board'`
+`import Square from 'tic-tac-toe/models/square'`
 
 AI = Em.Object.extend {}
 
@@ -53,7 +53,7 @@ basicStrategy = (board) ->
           when 2
             board.undoLastMark()
             return move
-      
+
           # 1 possible win, let's dive deeper
           when 1
             # if opponent can block and have 2 possible wins -> WORST
@@ -73,7 +73,7 @@ basicStrategy = (board) ->
 
             for counterMove in possibleCounters
               board.markSquare counterMove, Square.human
-              
+
               possibleOpponentWinSquares = board.get 'possibleWinSquaresHuman'
 
               if possibleOpponentWinSquares.length >= 1
@@ -87,7 +87,7 @@ basicStrategy = (board) ->
               neutralMove = move if neutralMove is null
 
         board.undoLastMark()
-          
+
       # after iterating, return GOOD otherwise NEUTRAL
       return goodMove if goodMove?
       return neutralMove
