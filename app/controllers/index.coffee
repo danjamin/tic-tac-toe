@@ -13,19 +13,17 @@ IndexController = Em.ObjectController.extend
       board.reset()
 
     squareMarked: (index) ->
-      isPaused = @get 'isPaused'
+      return if @get('isPaused')
 
-      unless isPaused
-        @set 'isPaused', true
+      board = @get 'board'
+      isGameOver = @get 'isGameOver'
 
-        board = @get 'board'
-        isGameOver = @get 'isGameOver'
+      @set 'isPaused', true
 
-        if not isGameOver and board.markSquare(index, Square.human)
-          nextMove = AI.nextMove(board)
-          isGameOver = @get 'isGameOver'
-          board.markSquare(nextMove, Square.computer) unless isGameOver
+      if not isGameOver and board.markSquare(index, Square.human)
+        nextMove = AI.nextMove(board)
+        board.markSquare(nextMove, Square.computer) unless @get('isGameOver')
 
-        @set 'isPaused', false
+      @set 'isPaused', false
 
 `export default IndexController`

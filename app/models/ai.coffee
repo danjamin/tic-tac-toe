@@ -15,7 +15,7 @@ basicStrategy = (board) ->
     # if second move, counter with center OR next available corner
     when 1
       if lastMove is Board.center
-        return board.get('nextAvailableCorner')
+        return board.get 'nextAvailableCorner'
       else
         return Board.center
 
@@ -56,17 +56,24 @@ basicStrategy = (board) ->
 
           # 1 possible win, let's dive deeper
           when 1
+            if goodMove?
+              board.undoLastMark()
+              continue
+
             # if opponent can block and have 2 possible wins -> WORST
             board.markSquare possibleWinSquares[0], Square.human
 
             possibleOpponentWinSquares = board.get 'possibleWinSquaresHuman'
-            if possibleOpponentWinSquares.length <= 1
-              goodMove = move if goodMove is null
+            goodMove = move if possibleOpponentWinSquares.length <= 1
 
             board.undoLastMark()
 
           # 0 possible wins, dive deeper
           else
+            if neutralMove?
+              board.undoLastMark()
+              continue
+
             # if opponent can setup 2 possible wins -> WORST
             possibleCounters = board.get 'possibleSquares'
             hasCounterMove = false
@@ -83,8 +90,7 @@ basicStrategy = (board) ->
 
               break if hasCounterMove
 
-            unless hasCounterMove
-              neutralMove = move if neutralMove is null
+            neutralMove = move unless hasCounterMove
 
         board.undoLastMark()
 

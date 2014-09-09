@@ -27,16 +27,13 @@ Board = Em.Object.extend
   step: Em.computed.alias 'moveStack.length'
 
   lastMove: Em.computed 'moveStack', ->
-    moveStack = @get 'moveStack'
-    step = @get 'step'
-    moveStack.objectAt step
+    @get('moveStack').objectAt @get('step')
 
   reset: ->
     @undoLastMark() while not Em.isEmpty(@get('moveStack'))
 
   isEmpty: Em.computed 'squares.@each.content', ->
-    squares = @get 'squares'
-    squares.every (square) -> square.get 'isBlank'
+    @get('squares').every (square) -> square.get 'isBlank'
 
   # Computer wins if his spots match a winning placement
   computerWins: Em.computed 'squares.@each.content', ->
@@ -109,7 +106,7 @@ Board = Em.Object.extend
       move = index if @get('computerWins')
       @undoLastMark()
 
-    return move
+    move
 
   blockingMove: Em.computed 'squares.@each.content', ->
     possibleSquares = @get 'possibleSquares'
@@ -121,13 +118,13 @@ Board = Em.Object.extend
       move = index if @get('humanWins')
       @undoLastMark()
 
-    return move
+    move
 
   nextAvailableCorner: Em.computed 'squares.@each.content', ->
     for index in Board.corners
       return index if @get('squares').objectAt(index).get('isBlank')
 
-    return null
+    null
 
 _getPossibleWinSquares = (type) ->
   possibleSquares = @get 'possibleSquares'

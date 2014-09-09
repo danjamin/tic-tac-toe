@@ -2,7 +2,7 @@
 
 GameBoardComponent = Em.Component.extend
   tagName: 'ul'
-  classNames: ['game-board-component', 'clearfix']
+  classNames: 'game-board-component clearfix'.w()
 
   board: null
   selectAction: null
