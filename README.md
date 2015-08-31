@@ -72,7 +72,7 @@ Login and create the heroku remote
 
 Use the correct build pack:
 
-    $ heroku config:set BUILDPACK_URL=https://github.com/tonycoco/heroku-buildpack-ember-cli.git
+    $ heroku config:set BUILDPACK_URL=https://github.com/tonycoco/heroku-buildpack-ember-cli.git#870dc93154547e753e4de2d02c149b8f7bc3dca8
 
 Deploy the app
 
